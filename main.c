@@ -1,6 +1,7 @@
 // Librarias
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include <time.h>
 #include <locale.h>
@@ -11,13 +12,10 @@
 
 int main (int argc, char *argv[])
 {  
-  iniciarEstruturas();
   carregarDados();
-  // menuPrincipal();
-  //
-  // for (int i = 0; i < medicos; i++) {
-  //   printf("Codigo: %d, Fila de espera: %d, Nome: %s\n", medico[i].codigo, medico[i].filaEspera, medico[i].nome);
-  // }
+  menuPrincipal();
 
-  return 0;
+  libertarMemoria();
+
+  return 1;
 }
