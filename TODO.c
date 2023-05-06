@@ -2,21 +2,21 @@
  * 
  * TODO Lista:
  * 
- * * Utente
+ * ? Utente
  * 
  * TODO Utente
- * ! Informar que já foi posto na lista de espera do medico
+ * * Informar que já foi posto na lista de espera do medico
  * ! Colocar na lista de espera do medico
  * 
  * 
- * * Medico
+ * ? Medico
  * 
  * TODO Gerir utentes
- * ! Inserir utente
+ * * Inserir utente
  * ! Editar utente
  * ! Consultar utentes
  * ! Remover utente
- * ! Listar utentes
+ * * Listar utentes
  * 
  * TODO Gerir Medicos
  * ! Inserir medico
@@ -26,7 +26,7 @@
  * ! Listar medicos
  * 
  * TODO Importar
- * ! Opcao para importar as informacoes
+ * * Opcao para importar as informacoes
  * 
  * TODO Registar entrada
  * * Menu para registar entrada do utilizador

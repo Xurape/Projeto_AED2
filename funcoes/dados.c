@@ -17,7 +17,17 @@ void carregarMedicos() {
       exit(1);
     }
 
-    fscanf(f_medicos, "%d,%d,%[^\n]s", &novo_medico->codigo, &novo_medico->primeiro, novo_medico->nome);
+    printf("A importar dados..\n");
+
+    fscanf(f_medicos, "%d,%[^\n]s", &novo_medico->codigo, novo_medico->nome);
+
+    printf("Dados importados.\n");
+
+    // Criar fila de espera
+    novo_medico->fila = (FilaEspera *)calloc(1, sizeof(FilaEspera));
+    novo_medico->fila->tam = 0;
+
+    printf("Fila criada.\n");
 
     if (primeiro_medico == NULL) {
       primeiro_medico = novo_medico;
@@ -30,7 +40,7 @@ void carregarMedicos() {
 
       atual_medico->proximo = novo_medico;
     }
-  
+
     medicos++;
   }
 
@@ -76,20 +86,6 @@ void carregarUtentes() {
   fclose(f_utentes);
 }
 
-// void verificarDados() {
-//   atual_utente = primeiro_utente;
-//   while (atual_utente != NULL) {
-//       printf("Codigo: %d, Médico: %d\n", atual_utente->codigo, atual_utente->medicoFamilia);
-//       atual_utente = atual_utente->proximo;
-//   }
-
-//   atual_medico = primeiro_medico;
-//   while (atual_medico != NULL) {
-//       printf("Codigo: %d, Fila Espera: %d, Nome: %s\n", atual_medico->codigo, atual_medico->primeiro, atual_medico->nome);
-//       atual_medico = atual_medico->proximo;
-//   }
-// }
-
 void carregarDados()
 {
   carregarUtentes();
@@ -97,15 +93,22 @@ void carregarDados()
 
   // TODO REMOVER NO FINAL!
   // verificarDados();
+
+  dadosImportados = true;
 }
 
 void libertarMemoria() {
-  Medicos *primeiro_medico = NULL, *atual_medico, *novo_medico;
-
   while (atual_medico != NULL)
   {
     Medicos *temp = atual_medico;
     atual_medico = atual_medico->proximo;
+    free(temp);
+  }
+
+  while (atual_utente != NULL)
+  {
+    Utentes *temp = atual_utente;
+    atual_utente = atual_utente->proximo;
     free(temp);
   }
 }

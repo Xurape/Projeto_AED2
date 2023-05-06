@@ -12,9 +12,8 @@
 
 int main (int argc, char *argv[])
 {  
-  carregarDados();
+  // carregarDados();
   menuPrincipal();
-
   libertarMemoria();
 
   return 1;

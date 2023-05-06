@@ -1,56 +1,3 @@
-void registarUtente() {
-    FILE *fp;
-
-    system("cls");
-
-    novo_utente = (Utentes *)calloc(1, sizeof(Utentes));
-
-    if (!(fp = fopen("database/utentes.txt", "a")))
-    {
-        printf("Erro ao abrir ficheiro dos utentes. A sair..\n");
-        exit(1);
-    }
-
-    if (novo_utente == NULL)
-    {
-      printf("Alocação de memória sem sucesso...\n");
-      exit(1);
-    }
-
-    novo_utente->codigo = utentes + 1;
-
-    printf("Codigo de utente atribuido: %d\n", utentes + 1);
-    printf("Por favor, complete os seguintes dados.. \n\n");
-    printf("Numero de medico de familia: ");
-    scanf("%d", &novo_utente->medicoFamilia);
-
-    while(novo_utente->medicoFamilia > medicos) {
-        printf("Esse medico nao existe! Por favor, insira o numero do seu medico.\n\n");
-        printf("Numero de medico de familia: ");
-        scanf("%d", &novo_utente->medicoFamilia);
-    }
-
-    if (primeiro_utente == NULL) {
-      primeiro_utente = novo_utente;
-    } else {
-      atual_utente = primeiro_utente;
-
-      while (atual_utente->proximo != NULL) {
-        atual_utente = atual_utente->proximo;
-      }
-
-      atual_utente->proximo = novo_utente;
-    }
-  
-    fprintf(fp, "\n%d,%d", novo_utente->codigo,novo_utente->medicoFamilia);
-    fclose(fp);
-    utentes++;
-
-    system("cls");
-
-    printf("Utente registado com sucesso.. A retomar..\n");
-}
-
 void menuUtente() {
     int utente;
 
@@ -58,6 +5,7 @@ void menuUtente() {
 
     if(primeiro_medico == NULL) {
         printf("Nao existem medicos disponiveis a sair...\n");
+        system("pause");
         return;
     }
 
@@ -67,13 +15,41 @@ void menuUtente() {
     if(!utenteExiste(utente))
         registarUtente();
 
-    inserirNaFilaEspera(utente);
+    // inserirNaFilaEspera(utente);
+    system("cls");
+
+    int nr_medico;
+    char nome_medico[100];
+
+    atual_utente = primeiro_utente;
+    while(atual_utente->proximo != NULL) {
+        if(atual_utente->codigo == utente)
+            nr_medico = atual_utente->medicoFamilia;
+
+        atual_utente = atual_utente->proximo;
+    }
+
+    atual_medico = primeiro_medico;
+    while(atual_medico->proximo != NULL) {
+        if(atual_medico->codigo == nr_medico)
+            strcpy(nome_medico, atual_medico->nome);
+
+        atual_medico = atual_medico->proximo;
+    }
+
+    printf("Foi inserido na lista de espera do seu medico (Medico NR: %d | Medico: %s) com sucesso!\n", &nr_medico, &nome_medico);
 
     system("pause");
 }
 
 void menuMedico() {
     system("cls");
+
+    if(primeiro_medico == NULL) {
+        printf("Nao existem medicos disponiveis a sair...\n");
+        system("pause");
+        return;
+    }
 }
 
 void menuAdministrar() {
@@ -87,6 +63,7 @@ void menuAdministrar() {
         printf("\t   O que deseja fazer?\n");
         printf(" [1] Gerir utentes\n");
         printf(" [2] Gerir medicos\n");
+        printf(" [3] Importar dados %s\n", (dadosImportados) ? "[Ja importados]" : "");
         printf(" [0] Voltar atras\n\nOpcao > ");
         scanf("%d", &opcao);
         switch(opcao) {
@@ -104,7 +81,11 @@ void menuAdministrar() {
                         scanf("%d", &gerirUtentes);
                         switch(gerirUtentes) {
                             case 1:
-                                
+                                registarUtente();
+                                break;
+
+                            case 5:
+                                listarUtentes();
                                 break;
                         }
                     }
@@ -112,6 +93,10 @@ void menuAdministrar() {
 
             case 2:
                 menuMedico();
+                break;
+
+            case 3:
+                carregarDados();
                 break;
         }
     }
