@@ -16,5 +16,12 @@ int main (int argc, char *argv[])
   menuPrincipal();
   libertarMemoria();
 
+  atual_medico = primeiro_medico;
+  while(atual_medico->proximo != NULL) {
+    system("cls");
+    printf("Prox: %d | Anterior: %d | Codigo: %d | Fila: %d\n", atual_medico->proximo, atual_medico->anterior, atual_medico->codigo, atual_medico->fila);
+    atual_medico = atual_medico->proximo;
+  }
+
   return 1;
 }

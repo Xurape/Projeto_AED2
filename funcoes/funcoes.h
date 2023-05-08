@@ -1,6 +1,7 @@
 #include "funcoes.c"
 #include "dados.c"
 #include "filaEspera.c"
+#include "medicos.c"
 #include "utentes.c"
 #include "administrador.c"
 #include "menus.c"

@@ -84,6 +84,10 @@ void menuAdministrar() {
                                 registarUtente();
                                 break;
 
+                            case 2:
+                                editarUtente();
+                                break;
+
                             case 5:
                                 listarUtentes();
                                 break;

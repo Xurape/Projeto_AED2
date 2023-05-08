@@ -67,6 +67,48 @@ void registarUtente() {
     printf("Utente registado com sucesso.. A retomar..\n");
 }
 
+void editarUtente() {
+    system("cls");
+    int utente, opcao;
+
+    printf("Por favor, insira o numero de utente a editar: ");
+    scanf("%d", &utente);
+
+    atual_utente = primeiro_utente;
+    while (atual_utente != NULL) {
+        if(atual_utente->codigo == utente) {
+            printf("Codigo: %d, Medico nr: %d\n\n", atual_utente->codigo, atual_utente->medicoFamilia);
+            do {
+                printf("O que deseja fazer?\n [1] Editar numero do medico\n\n » ");
+                scanf("%d", &opcao);
+            } while(opcao < 1 && opcao > 2);
+
+            switch(opcao) {
+                case 1:
+                    int novo_codigo;
+                    bool existe = true;
+                    do {
+                        if(!existe) {
+                            printf("Esse medico nao existe! Por favor, insira um medico existente.\n\n");
+                        }    
+                        printf("Qual o numero do medico? ");
+                        scanf("%d", &novo_codigo);
+                        existe = false;
+                        existe = medicoExiste(novo_codigo);
+                    } while(!existe);
+                    atual_utente->medicoFamilia = novo_codigo;
+                    printf("Codigo do medico de familia alterado com sucesso!\n");
+                    system("pause");
+                    break;
+
+                case 2:
+                    break;
+            }
+        }
+        atual_utente = atual_utente->proximo;
+    }
+}
+
 void listarUtentes() {
     system("cls");
 

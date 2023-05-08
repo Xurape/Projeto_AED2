@@ -35,7 +35,9 @@ void carregarMedicos() {
       atual_medico = primeiro_medico;
 
       while (atual_medico->proximo != NULL) {
+        anterior_medico = atual_medico;
         atual_medico = atual_medico->proximo;
+        atual_medico->anterior = anterior_medico;
       }
 
       atual_medico->proximo = novo_medico;
@@ -74,7 +76,9 @@ void carregarUtentes() {
       atual_utente = primeiro_utente;
 
       while (atual_utente->proximo != NULL) {
+        anterior_utente = atual_utente;
         atual_utente = atual_utente->proximo;
+        atual_utente->anterior = anterior_utente;
       }
 
       atual_utente->proximo = novo_utente;
@@ -90,9 +94,6 @@ void carregarDados()
 {
   carregarUtentes();
   carregarMedicos();
-
-  // TODO REMOVER NO FINAL!
-  // verificarDados();
 
   dadosImportados = true;
 }
