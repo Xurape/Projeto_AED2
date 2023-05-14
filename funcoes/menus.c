@@ -92,6 +92,10 @@ void menuAdministrar() {
                                 consultarUtentes();
                                 break;
 
+                            case 4:
+                                removerUtente();
+                                break;
+
                             case 5:
                                 listarUtentes();
                                 break;
