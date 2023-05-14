@@ -13,8 +13,8 @@
  * 
  * TODO Gerir utentes
  * * Inserir utente
- * ! Editar utente
- * ! Consultar utentes
+ * * Editar utente
+ * * Consultar utentes
  * ! Remover utente
  * * Listar utentes
  * 

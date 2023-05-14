@@ -8,7 +8,10 @@ bool utenteExiste(int numero) {
         if(atual_utente->codigo == numero)
             return true;
 
-        atual_utente->proximo;
+        atual_utente = atual_utente->proximo;
+
+        if(atual_utente->codigo == numero)
+            return true;
     } while(atual_utente->proximo != NULL);
 
     return false;
@@ -33,14 +36,19 @@ void registarUtente() {
       exit(1);
     }
 
-    novo_utente->codigo = utentes + 1;
+    printf("Esse utente nao existe. \nPor favor, registe-o: \n\n");
+    printf("Codigo de utente: ");
+    scanf("%d", &novo_utente->codigo);
 
-    printf("Codigo de utente atribuido: %d\n", utentes + 1);
-    printf("Por favor, complete os seguintes dados.. \n\n");
+    while(utenteExiste(novo_utente->codigo)) {
+        printf("\nEsse utente ja existe. Por favor, re-insira um codigo nao existente: ");
+        scanf("%d", &novo_utente->codigo);
+    }
+    
     printf("Numero de medico de familia: ");
     scanf("%d", &novo_utente->medicoFamilia);
 
-    while(novo_utente->medicoFamilia > medicos) {
+    while(!medicoExiste(novo_utente->medicoFamilia)) {
         printf("Esse medico nao existe! Por favor, insira o numero do seu medico.\n\n");
         printf("Numero de medico de familia: ");
         scanf("%d", &novo_utente->medicoFamilia);
@@ -69,7 +77,8 @@ void registarUtente() {
 
 void editarUtente() {
     system("cls");
-    int utente, opcao;
+    int utente, opcao, novo_codigo;
+    bool existe = true;
 
     printf("Por favor, insira o numero de utente a editar: ");
     scanf("%d", &utente);
@@ -79,14 +88,13 @@ void editarUtente() {
         if(atual_utente->codigo == utente) {
             printf("Codigo: %d, Medico nr: %d\n\n", atual_utente->codigo, atual_utente->medicoFamilia);
             do {
-                printf("O que deseja fazer?\n [1] Editar numero do medico\n\n » ");
+                printf("O que deseja fazer?\n [1] Editar numero do medico\n\n > ");
                 scanf("%d", &opcao);
             } while(opcao < 1 && opcao > 2);
 
             switch(opcao) {
                 case 1:
-                    int novo_codigo;
-                    bool existe = true;
+                    existe = true;
                     do {
                         if(!existe) {
                             printf("Esse medico nao existe! Por favor, insira um medico existente.\n\n");
@@ -107,6 +115,36 @@ void editarUtente() {
         }
         atual_utente = atual_utente->proximo;
     }
+}
+
+void consultarUtentes() {
+    system("cls");
+    int utente, opcao, novo_codigo;
+    bool existe = true;
+
+    if(primeiro_utente == NULL) {
+        printf("Nao existem utentes.\n");
+        return;
+    }
+
+    printf("Por favor, insira o numero de utente a consultar: ");
+    scanf("%d", &utente);
+
+    while(!utenteExiste(utente)) {
+        printf("Esse utente nao existe!\nPor favor, insira o numero de utente a consultar: ");
+        scanf("%d", &utente);
+    }
+
+    atual_utente = primeiro_utente;
+    while (atual_utente != NULL) {
+        if(atual_utente->codigo == utente) {
+            printf("Codigo: %d, NR do medico: %d\n\n", atual_utente->codigo, atual_utente->medicoFamilia);
+        }
+
+        atual_utente = atual_utente->proximo;
+    }
+
+    system("pause");
 }
 
 void listarUtentes() {

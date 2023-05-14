@@ -8,7 +8,10 @@ bool medicoExiste(int numero) {
         if(atual_medico->codigo == numero)
             return true;
 
-        atual_medico->proximo;
+        atual_medico = atual_medico->proximo;
+        
+        if(atual_medico->codigo == numero)
+            return true;
     } while(atual_medico->proximo != NULL);
 
     return false;
