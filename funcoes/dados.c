@@ -25,7 +25,8 @@ void carregarMedicos() {
 
     // Criar fila de espera
     novo_medico->fila = (FilaEspera *)calloc(1, sizeof(FilaEspera));
-    novo_medico->fila->tam = 0;
+    novo_medico->fila->inicio = NULL;
+    novo_medico->fila->fim = NULL;
 
     printf("Fila criada.\n");
 

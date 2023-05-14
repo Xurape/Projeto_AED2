@@ -252,7 +252,7 @@ void listarUtentes() {
 
     atual_utente = primeiro_utente;
     while (atual_utente != NULL) {
-        printf("Codigo: %d, Medico nr: %d\n\n", atual_utente->codigo, atual_utente->medicoFamilia);
+        printf("Codigo: %d, Medico NR: %d\n\n", atual_utente->codigo, atual_utente->medicoFamilia);
         atual_utente = atual_utente->proximo;
     }
 

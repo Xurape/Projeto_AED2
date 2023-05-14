@@ -15,34 +15,44 @@ void menuUtente() {
     if(!utenteExiste(utente))
         registarUtente();
 
-    // inserirNaFilaEspera(utente);
     system("cls");
 
     int nr_medico;
-    char nome_medico[100];
+
+    Utentes *utenteData;
+    Medicos *medicoData;
 
     atual_utente = primeiro_utente;
     while(atual_utente->proximo != NULL) {
-        if(atual_utente->codigo == utente)
+        if(atual_utente->codigo == utente) {
+            utenteData = atual_utente;
             nr_medico = atual_utente->medicoFamilia;
+            break;
+        }
 
         atual_utente = atual_utente->proximo;
     }
 
     atual_medico = primeiro_medico;
     while(atual_medico->proximo != NULL) {
-        if(atual_medico->codigo == nr_medico)
-            strcpy(nome_medico, atual_medico->nome);
+        if(atual_medico->codigo == nr_medico) {
+            medicoData = atual_medico;
+            break;
+        }
 
         atual_medico = atual_medico->proximo;
     }
 
-    printf("Foi inserido na lista de espera do seu medico (Medico NR: %d | Medico: %s) com sucesso!\n", &nr_medico, &nome_medico);
+    adicionarUtente(medicoData, utenteData);
+
+    printf("Foi inserido na lista de espera do seu medico (Medico NR: %d | Medico: %s) com sucesso!\n", medicoData->codigo, medicoData->nome);
 
     system("pause");
 }
 
 void menuMedico() {
+    int medico;
+    Medicos *medicoData;
     system("cls");
 
     if(primeiro_medico == NULL) {
@@ -50,6 +60,21 @@ void menuMedico() {
         system("pause");
         return;
     }
+
+    printf("Qual o seu numero de medico? ");
+    scanf("%d", &medico);
+
+    atual_medico = primeiro_medico;
+    while(atual_medico != NULL) {
+        if(atual_medico->codigo == medico) {
+            medicoData = atual_medico;
+            break;
+        }
+
+        atual_medico = atual_medico->proximo;
+    }
+
+    imprimirFilaEspera(medicoData);
 }
 
 void menuAdministrar() {

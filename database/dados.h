@@ -9,7 +9,8 @@ typedef struct utentes {
 } Utentes;
 
 typedef struct filaEspera {
-  int *utentes, tam;
+  Utentes *inicio;
+  Utentes *fim;
 } FilaEspera;
 
 typedef struct medicos {
