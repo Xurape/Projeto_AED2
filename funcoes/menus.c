@@ -19,13 +19,9 @@ void menuUtente() {
 
     int nr_medico;
 
-    Utentes *utenteData;
-    Medicos *medicoData;
-
     atual_utente = primeiro_utente;
-    while(atual_utente->proximo != NULL) {
+    while(atual_utente != NULL) {
         if(atual_utente->codigo == utente) {
-            utenteData = atual_utente;
             nr_medico = atual_utente->medicoFamilia;
             break;
         }
@@ -34,18 +30,16 @@ void menuUtente() {
     }
 
     atual_medico = primeiro_medico;
-    while(atual_medico->proximo != NULL) {
-        if(atual_medico->codigo == nr_medico) {
-            medicoData = atual_medico;
+    while(atual_medico != NULL) {
+        if(atual_medico->codigo == nr_medico)
             break;
-        }
 
         atual_medico = atual_medico->proximo;
     }
 
-    adicionarUtente(medicoData, utenteData);
+    adicionarUtente(atual_medico, atual_utente);
 
-    printf("Foi inserido na lista de espera do seu medico (Medico NR: %d | Medico: %s) com sucesso!\n", medicoData->codigo, medicoData->nome);
+    printf("Foi inserido na lista de espera do seu medico (Medico NR: %d | Medico: %s) com sucesso!\n", atual_medico->codigo, atual_medico->nome);
 
     system("pause");
 }
@@ -64,6 +58,11 @@ void menuMedico() {
     printf("Qual o seu numero de medico? ");
     scanf("%d", &medico);
 
+    while(!medicoExiste(medico)) {
+        printf("\nEsse numero de medico nao existe. Qual o seu numero de medico? ");
+        scanf("%d", &medico);
+    }
+
     atual_medico = primeiro_medico;
     while(atual_medico != NULL) {
         if(atual_medico->codigo == medico) {
@@ -74,7 +73,28 @@ void menuMedico() {
         atual_medico = atual_medico->proximo;
     }
 
-    imprimirFilaEspera(medicoData);
+    int opcao;
+
+    while(opcao != 0) {
+        system("cls");
+        printf("\n\n");
+        printf("    Bem-vindo, %s", medicoData->nome);
+        printf("O que deseja fazer?\n\n");
+        printf(" [1] Ver fila de espera\n");
+        printf(" [2] Remover ultimo utente da fila de espera\n");
+        printf(" [0] Sair\n\nOpcao > ");
+        scanf("%d", &opcao);
+        switch(opcao) {
+            case 1:
+                imprimirFilaEspera(medicoData);
+                break;
+
+            case 2:
+                removerUltimoDaFilaEspera(medicoData);
+                break;
+        }
+    }
+
 }
 
 void menuAdministrar() {
