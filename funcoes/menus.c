@@ -104,7 +104,44 @@ void menuAdministrar() {
                 break;
 
             case 2:
-                menuMedico();
+                while(gerirMedicos != 0) {
+                    system("cls");
+                    printf("\n\n");
+                    printf("\t   O que deseja fazer?\n");
+                    printf(" [1] Inserir medico\n");
+                    printf(" [2] Editar medico\n");
+                    printf(" [3] Consultar medicos\n");
+                    printf(" [4] Remover medico\n");
+                    printf(" [5] Listar medicos\n");
+                    printf(" [6] Listar utentes por medico\n");
+                    printf(" [0] Voltar atras\n\nOpcao > ");
+                    scanf("%d", &gerirMedicos);
+                    switch(gerirMedicos) {
+                        case 1:
+                            registarMedico();
+                            break;
+
+                        case 2:
+                            editarMedico();
+                            break;
+
+                        case 3:
+                            consultarMedicos();
+                            break;
+
+                        case 4:
+                            removerMedico();
+                            break;
+
+                        case 5:
+                            listarMedicos();
+                            break;
+
+                        case 6:
+                            listarUtentesPorMedico();
+                            break;
+                    }
+                }
                 break;
 
             case 3:

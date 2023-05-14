@@ -15,15 +15,15 @@
  * * Inserir utente
  * * Editar utente
  * * Consultar utentes
- * ! Remover utente
+ * * Remover utente
  * * Listar utentes
  * 
  * TODO Gerir Medicos
- * ! Inserir medico
- * ! Editar medico
- * ! Consultar medicos
- * ! Remover medico
- * ! Listar medicos
+ * * Inserir medico
+ * * Editar medico
+ * * Consultar medicos
+ * * Remover medico
+ * * Listar medicos
  * 
  * TODO Importar
  * * Opcao para importar as informacoes
@@ -35,6 +35,6 @@
  * ! Verificar lista de espera do medico
  * ! Dado o codigo do medico retirar da lista de espera o prox. utente a ser atendido
  * ! Dado o codigo do medico verificar o numero de utentes em lista de espera
- * ! Listar todos os utentes ordenados por medico
+ * * Listar todos os utentes ordenados por medico
  * 
 */

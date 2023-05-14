@@ -4,15 +4,12 @@ bool utenteExiste(int numero) {
 
     atual_utente = primeiro_utente;
 
-    do {
+    while(atual_utente != NULL) {
         if(atual_utente->codigo == numero)
             return true;
-
+        
         atual_utente = atual_utente->proximo;
-
-        if(atual_utente->codigo == numero)
-            return true;
-    } while(atual_utente->proximo != NULL);
+    }
 
     return false;
 }
