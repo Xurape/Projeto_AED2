@@ -1,3 +1,8 @@
+/**
+ * 
+ * Medico existe?
+ * 
+*/
 bool medicoExiste(int numero) {
     if(primeiro_medico == NULL)
         return false;
@@ -14,6 +19,11 @@ bool medicoExiste(int numero) {
     return false;
 }
 
+/**
+ * 
+ * Registar medico
+ * 
+*/
 void registarMedico() {
     FILE *fp;
     int medico, nome;
@@ -72,6 +82,11 @@ void registarMedico() {
     system("pause");
 }
 
+/**
+ * 
+ * Editar medico
+ * 
+*/
 void editarMedico() {
     system("cls");
     int medico, opcao, novo_codigo;
@@ -127,6 +142,11 @@ void editarMedico() {
     }
 }
 
+/**
+ * 
+ * Consultar medico
+ * 
+*/
 void consultarMedicos() {
     system("cls");
     int medico;
@@ -157,6 +177,11 @@ void consultarMedicos() {
     system("pause");
 }
 
+/**
+ * 
+ * Remover medico
+ * 
+*/
 void removerMedico() {
     system("cls");
     int medico;
@@ -240,6 +265,11 @@ void removerMedico() {
     system("pause");
 }
 
+/**
+ * 
+ * Listar utentes por medico
+ * 
+*/
 void listarUtentesPorMedico() {
     int medico;
 
@@ -273,6 +303,11 @@ void listarUtentesPorMedico() {
     system("pause");
 }
 
+/**
+ * 
+ * Listar medicos
+ * 
+*/
 void listarMedicos() {
     system("cls");
     

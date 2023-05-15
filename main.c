@@ -10,11 +10,8 @@
 #include "database/dados.h"
 #include "funcoes/funcoes.h"
 
-int main (int argc, char *argv[])
-{  
-  // carregarDados();
+int main(int argc, char *argv[])
+{
   menuPrincipal();
   libertarMemoria();
-
-  return 1;
 }

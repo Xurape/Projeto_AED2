@@ -1,3 +1,8 @@
+/**
+ * 
+ * Utente existe?
+ * 
+*/
 bool utenteExiste(int numero) {
     if(primeiro_utente == NULL)
         return false;
@@ -14,6 +19,11 @@ bool utenteExiste(int numero) {
     return false;
 }
 
+/**
+ * 
+ * Registar utente
+ * 
+*/
 void registarUtente() {
     FILE *fp;
     int utente, medico;
@@ -79,6 +89,11 @@ void registarUtente() {
     system("pause");
 }
 
+/**
+ * 
+ * Editar utente
+ * 
+*/
 void editarUtente() {
     system("cls");
     int utente, opcao, novo_codigo;
@@ -127,6 +142,11 @@ void editarUtente() {
     }
 }
 
+/**
+ * 
+ * Consultar utentes
+ * 
+*/
 void consultarUtentes() {
     system("cls");
     int utente, opcao, novo_codigo;
@@ -158,6 +178,11 @@ void consultarUtentes() {
     system("pause");
 }
 
+/**
+ * 
+ * Remover utente
+ * 
+*/
 void removerUtente() {
     system("cls");
     int utente;
@@ -241,6 +266,11 @@ void removerUtente() {
     system("pause");
 }
 
+/**
+ * 
+ * Listar utentes
+ * 
+*/
 void listarUtentes() {
     system("cls");
     

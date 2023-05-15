@@ -35,18 +35,11 @@ void carregarMedicos() {
       exit(1);
     }
 
-    printf("A importar dados..\n");
-
     fscanf(f_medicos, "%d,%[^\n]s", &novo_medico->codigo, novo_medico->nome);
 
-    printf("Dados importados.\n");
-
-    // Criar fila de espera
     novo_medico->fila = (FilaEspera *)calloc(1, sizeof(FilaEspera));
     novo_medico->fila->inicio = NULL;
     novo_medico->fila->fim = NULL;
-
-    printf("Fila criada.\n");
 
     if (primeiro_medico == NULL) {
       primeiro_medico = novo_medico;

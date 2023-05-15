@@ -1,3 +1,8 @@
+/**
+ * 
+ * Menu dos utentes
+ * 
+*/
 void menuUtente() {
     int utente;
 
@@ -44,6 +49,11 @@ void menuUtente() {
     system("pause");
 }
 
+/**
+ * 
+ * Menu dos medicos
+ * 
+*/
 void menuMedico() {
     int medico;
     Medicos *medicoData;
@@ -97,6 +107,11 @@ void menuMedico() {
 
 }
 
+/**
+ * 
+ * Menu de administrar
+ * 
+*/
 void menuAdministrar() {
     system("cls");
 
@@ -197,6 +212,11 @@ void menuAdministrar() {
 
 }
 
+/**
+ * 
+ * Menu principal
+ * 
+*/
 void menuPrincipal() {
     int opcao;
 
