@@ -1,3 +1,8 @@
+/**
+ * 
+ * Adicionar utente à fila de espera
+ * 
+*/
 void adicionarUtente(Medicos *medico, Utentes *utente)
 {
     if (medico->fila->inicio == NULL)
@@ -12,6 +17,11 @@ void adicionarUtente(Medicos *medico, Utentes *utente)
     }
 }
 
+/**
+ * 
+ * Imprimir fila de espera de um medico
+ * 
+*/
 void imprimirFilaEspera(Medicos *medico)
 {
     int i = 0;
@@ -32,6 +42,11 @@ void imprimirFilaEspera(Medicos *medico)
     system("pause");
 }
 
+/**
+ * 
+ * Remover ultimo utente da fila de espera de um medico
+ * 
+*/
 void removerUltimoDaFilaEspera(Medicos *medico)
 {
     if (medico->fila->inicio == NULL)

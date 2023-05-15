@@ -1,3 +1,21 @@
+/**
+ * 
+ * Carregar os dados guardados
+ * 
+*/
+void carregarDados()
+{
+  carregarUtentes();
+  carregarMedicos();
+
+  dadosImportados = true;
+}
+
+/**
+ * 
+ * Carregar todos os medicos guardados
+ * 
+*/
 void carregarMedicos() {
   FILE *f_medicos = NULL;
 
@@ -50,6 +68,12 @@ void carregarMedicos() {
   fclose(f_medicos);
 }
 
+
+/**
+ * 
+ * Carregar todos os utentes guardados
+ * 
+*/
 void carregarUtentes() {
   FILE *f_utentes;
 
@@ -91,14 +115,11 @@ void carregarUtentes() {
   fclose(f_utentes);
 }
 
-void carregarDados()
-{
-  carregarUtentes();
-  carregarMedicos();
-
-  dadosImportados = true;
-}
-
+/**
+ * 
+ * Libertar a memoria usada pelo programa
+ * 
+*/
 void libertarMemoria() {
   while (atual_medico != NULL)
   {
